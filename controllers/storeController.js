@@ -72,3 +72,9 @@ exports.updateStore = async (req, res) => {
   res.redirect(`/stores/${store._id}/edit`);
 
 };
+
+exports.getStoresByTag = async(req, res) => {
+  const tags = await Store.getTagsList();
+  const tag = req.params.tag || 'Tags';
+  res.render('tags', {title: tag, tags, tag });
+};
